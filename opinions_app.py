@@ -2,13 +2,15 @@ from datetime import datetime, timezone
 
 from random import randrange
 
-from flask import Flask
+from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SECRET_KEY'] = 'hI9GZmGrD1q2q5v2KPKNpw0CLSPk-ImErzYKpNGRt7E'
+
 db = SQLAlchemy(app)
 
 
@@ -28,7 +30,18 @@ def index_view():
         return 'В базе данных мнений о фильмах нет.'
     offset_value = randrange(quantity)
     opinion = Opinion.query.offset(offset_value).first()
-    return opinion.text
+    return render_template('opinion.html', opinion=opinion)
+
+
+@app.route('/add')
+def add_opinion_view():
+    return render_template('add_opinion.html')
+
+
+@app.route('/opinions/<int:id>')
+def opinion_view(id):
+    opinion = Opinion.query.get_or_404(id)
+    return render_template('opinion.html', opinion=opinion)
 
 
 if __name__ == '__main__':
