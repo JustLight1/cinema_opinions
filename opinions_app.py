@@ -6,6 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, TextAreaField, URLField
 from wtforms.validators import DataRequired, Length, Optional
+from flask_migrate import Migrate
 
 
 app = Flask(__name__)
@@ -15,6 +16,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'hI9GZmGrD1q2q5v2KPKNpw0CLSPk-ImErzYKpNGRt7E'
 
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 
 class Opinion(db.Model):
@@ -24,6 +26,7 @@ class Opinion(db.Model):
     source = db.Column(db.String(256))
     timestamp = db.Column(db.DateTime, index=True,
                           default=datetime.now(timezone.utc))
+    added_by = db.Column(db.String(64))
 
 
 class OpinionForm(FlaskForm):
