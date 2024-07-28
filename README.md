@@ -28,7 +28,7 @@ http://<your_domain>/api/opinions/
 - PATCH обновить отзыв по id:
 - DELETE удалить отзыв по id:
 
-```
+```python
 http://<your_domain>/api/opinions/<int:id>/
 ```
 
