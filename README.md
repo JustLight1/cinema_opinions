@@ -38,49 +38,75 @@ http://<your_domain>/api/opinions/<int:id>/
 http://<your_domain>/api/get-random-opinion/
 ```
 
-### Как запустить проект:
+### Технологии
+
+Python 3.10.11
+
+Flask 3.0.2
+
+flask-sqlalchemy 3.1.1
+
+Flask-WTF 1.2.1
+
+Flask-Migrate 4.0.7
+
+<details>
+
+<summary>
+<h4>Как запустить проект:</h4>
+</summary>
 
 Клонировать репозиторий и перейти в него в командной строке:
 
-```
-git clone
+```bash
+git clone git@github.com:JustLight1/cinema_opinions.git
 ```
 
-```
+```bash
 cd cinema_opinions
 ```
 
-Cоздать и активировать виртуальное окружение:
+Создать и активировать виртуальное окружение:
 
-```
+```bash
 python3 -m venv venv
 ```
 
-```
+```bash
 source venv/bin/activate
 ```
 
 или для пользователей Windows
 
-```
+```bash
 source env/Scripts/activate
 ```
 
 Установить зависимости из файла requirements.txt:
 
-```
+```bash
 python3 -m pip install --upgrade pip
 ```
 
-```
+```bash
 pip install -r requirements.txt
+```
+
+Создать файл `.env` и заполнить его по примеру из файла `.env.example`
+
+Применить миграции
+
+```bash
+flask db upgrade
 ```
 
 Запустить проект:
 
-```
+```bash
 flask run
 ```
+
+<details>
 
 # Автор:
 
