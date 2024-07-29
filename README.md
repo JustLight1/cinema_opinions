@@ -106,7 +106,7 @@ flask db upgrade
 flask run
 ```
 
-<details>
+</details>
 
 # Автор:
 
