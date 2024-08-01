@@ -61,7 +61,7 @@ def add_opinion():
     opinion.from_dict(data)
     db.session.add(opinion)
     db.session.commit()
-    return jsonify({'opinion': opinion.to_dict()}), 2
+    return jsonify({'opinion': opinion.to_dict()}), 200
 
 
 @app.route('/api/get-random-opinion/', methods=['GET'])
